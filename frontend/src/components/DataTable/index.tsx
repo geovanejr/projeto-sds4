@@ -26,6 +26,13 @@ const DataTable = () => {
                         <td>3</td>
                         <td>45800.00</td>
                     </tr>
+                    <tr>
+                        <td>27/05/2021</td>
+                        <td>Capitão América</td>
+                        <td>18</td>
+                        <td>45</td>
+                        <td>180000,00</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
