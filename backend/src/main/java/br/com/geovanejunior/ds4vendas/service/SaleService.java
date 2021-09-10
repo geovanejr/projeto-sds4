@@ -1,6 +1,8 @@
 package br.com.geovanejunior.ds4vendas.service;
 
 import br.com.geovanejunior.ds4vendas.dto.SaleDTO;
+import br.com.geovanejunior.ds4vendas.dto.SaleSuccessDTO;
+import br.com.geovanejunior.ds4vendas.dto.SaleSumDTO;
 import br.com.geovanejunior.ds4vendas.repositories.SaleRepository;
 import br.com.geovanejunior.ds4vendas.repositories.SellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +35,18 @@ public class SaleService {
         sellerRepo.findAll();
         final var sale = saleRepo.findAll(pageable);
         return sale.map(x -> new SaleDTO(x));
+    }
+
+    @Transactional(readOnly = true)
+    public List<SaleSumDTO> amountGroupedBySeller() {
+
+        sellerRepo.findAll();
+        return saleRepo.amountGroupedBySeller();
+    }
+    @Transactional(readOnly = true)
+    public List<SaleSuccessDTO> successGroupedBySeller() {
+
+        sellerRepo.findAll();
+        return saleRepo.successGroupedBySeller();
     }
 }

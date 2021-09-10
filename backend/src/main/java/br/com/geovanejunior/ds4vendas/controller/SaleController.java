@@ -1,6 +1,8 @@
 package br.com.geovanejunior.ds4vendas.controller;
 
 import br.com.geovanejunior.ds4vendas.dto.SaleDTO;
+import br.com.geovanejunior.ds4vendas.dto.SaleSuccessDTO;
+import br.com.geovanejunior.ds4vendas.dto.SaleSumDTO;
 import br.com.geovanejunior.ds4vendas.dto.SellerDTO;
 import br.com.geovanejunior.ds4vendas.service.SaleService;
 import br.com.geovanejunior.ds4vendas.service.SellerService;
@@ -35,5 +37,21 @@ public class SaleController {
         final var saleDTO = saleServ.findPageAll(pageable);
 
         return ResponseEntity.ok(saleDTO);
+    }
+
+    @GetMapping(value="/amount-by-seller")
+    public ResponseEntity<List<SaleSumDTO>> amountGroupedBySeller() {
+
+        final var saleSumDTO = saleServ.amountGroupedBySeller();
+
+        return ResponseEntity.ok(saleSumDTO);
+    }
+
+    @GetMapping(value="/success-by-seller")
+    public ResponseEntity<List<SaleSuccessDTO>> successGroupedBySeller() {
+
+        final var saleSuccessDTO = saleServ.successGroupedBySeller();
+
+        return ResponseEntity.ok(saleSuccessDTO);
     }
 }
